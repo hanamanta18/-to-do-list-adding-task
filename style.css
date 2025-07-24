@@ -1,80 +1,75 @@
+/* Basic Reset */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #e8f5e9;
+  background: #f2f2f2;
+  color: #333;
+  padding: 20px;
 }
 
 header {
-  background-color: #2e7d32;
-  color: white;
-  padding: 20px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
-.grid-container {
+.container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 20px;
-  gap: 20px;
+  gap: 30px;
 }
 
-.form-section, .todo-section {
+section {
   background: white;
   padding: 20px;
   border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-input, textarea {
-  margin-bottom: 15px;
+/* Form Styling */
+form input, form textarea, form button {
+  width: 100%;
   padding: 10px;
-  font-size: 16px;
+  margin: 10px 0;
 }
 
-button {
-  background-color: #43a047;
+form button {
+  background-color: #007bff;
   color: white;
-  padding: 10px;
   border: none;
-  font-size: 16px;
-  border-radius: 5px;
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #2e7d32;
+/* To-Do Styling */
+.todo-controls {
+  display: flex;
+  gap: 10px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.todo-controls input {
+  flex: 1;
 }
 
-li {
-  background-color: #c8e6c9;
-  margin: 5px 0;
+#taskList {
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+#taskList li {
   padding: 8px;
-  border-radius: 4px;
-}
-
-li span {
-  float: right;
-  cursor: pointer;
-  color: red;
+  background: #e0e0e0;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .grid-container {
+  .container {
     grid-template-columns: 1fr;
   }
 }

@@ -1,44 +1,37 @@
-// Form validation
-document.getElementById("contactForm").addEventListener("submit", function(e) {
+// Contact Form Validation
+document.getElementById("contactForm").addEventListener("submit", function (e) {
   e.preventDefault();
+  
+  const email = document.getElementById("email").value;
+  const name = document.getElementById("name").value;
+  const message = document.getElementById("message").value;
+  const feedback = document.getElementById("formFeedback");
 
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
-
-  if (!name || !email || !message) {
-    alert("All fields are required!");
-    return;
+  if (!email.includes("@") || !name || !message) {
+    feedback.textContent = "Please enter valid details.";
+    feedback.style.color = "red";
+  } else {
+    feedback.textContent = "Form submitted successfully!";
+    feedback.style.color = "green";
+    this.reset();
   }
-
-  const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
-  if (!emailRegex.test(email)) {
-    alert("Please enter a valid email address.");
-    return;
-  }
-
-  alert("Form submitted successfully!");
-  this.reset();
 });
 
-// To-do list
+// To-Do List
 function addTask() {
   const taskInput = document.getElementById("taskInput");
-  const taskValue = taskInput.value.trim();
+  const taskText = taskInput.value.trim();
 
-  if (taskValue === "") {
-    alert("Please enter a task.");
-    return;
-  }
+  if (taskText === "") return;
 
   const li = document.createElement("li");
-  li.textContent = taskValue;
-
-  const removeBtn = document.createElement("span");
-  removeBtn.textContent = "✖";
-  removeBtn.onclick = () => li.remove();
-
-  li.appendChild(removeBtn);
+  li.innerHTML = ${taskText} <button onclick="removeTask(this)">Remove</button>;
   document.getElementById("taskList").appendChild(li);
-  taskInput.value = "";
+
+  taskInput.value = "";
+}
+
+function removeTask(button) {
+  const li = button.parentElement;
+  li.remove();
 }
